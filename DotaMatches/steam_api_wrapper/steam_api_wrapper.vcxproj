@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{50B2BE77-69A4-40F6-81F1-3E6B63420E15}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>steam_api_wrapper</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;STEAM_API_WRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>dll.def</ModuleDefinitionFile>
+      <AdditionalDependencies>valvelib\steam_api.lib;valvelib\steam.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy valvedll\steam_api.dll $(TargetDir) /B /Y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;STEAM_API_WRAPPER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>dll.def</ModuleDefinitionFile>
+      <AdditionalDependencies>valvelib\steam_api.lib;valvelib\steam.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="dll.def" />
+    <None Include="ReadMe.txt" />
+    <None Include="valvedll\steam.dll" />
+    <None Include="valvedll\steamclient.dll" />
+    <None Include="valvedll\steam_api.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Externs.h" />
+    <ClInclude Include="opensteamworks\AppsCommon.h" />
+    <ClInclude Include="opensteamworks\AppTicketCommon.h" />
+    <ClInclude Include="opensteamworks\BillingCommon.h" />
+    <ClInclude Include="opensteamworks\BridgeCommon.h" />
+    <ClInclude Include="opensteamworks\CCallback.h" />
+    <ClInclude Include="opensteamworks\CGameID.h" />
+    <ClInclude Include="opensteamworks\ClientCommon.h" />
+    <ClInclude Include="opensteamworks\ContentServerCommon.h" />
+    <ClInclude Include="opensteamworks\CSteamAPIContext.h" />
+    <ClInclude Include="opensteamworks\CSteamID.h" />
+    <ClInclude Include="opensteamworks\ECurrencyCode.h" />
+    <ClInclude Include="opensteamworks\EResult.h" />
+    <ClInclude Include="opensteamworks\ESteamAppUpdateStatsQueryType.h" />
+    <ClInclude Include="opensteamworks\ESteamBufferMethod.h" />
+    <ClInclude Include="opensteamworks\ESteamError.h" />
+    <ClInclude Include="opensteamworks\ESteamFindFilter.h" />
+    <ClInclude Include="opensteamworks\ESteamNotify.h" />
+    <ClInclude Include="opensteamworks\ESteamPaymentCardType.h" />
+    <ClInclude Include="opensteamworks\ESteamSeekMethod.h" />
+    <ClInclude Include="opensteamworks\ESteamServerType.h" />
+    <ClInclude Include="opensteamworks\ESteamSubscriptionBillingInfoType.h" />
+    <ClInclude Include="opensteamworks\ESteamSubscriptionStatus.h" />
+    <ClInclude Include="opensteamworks\EVoiceResult.h" />
+    <ClInclude Include="opensteamworks\FriendGameInfo.h" />
+    <ClInclude Include="opensteamworks\FriendsCommon.h" />
+    <ClInclude Include="opensteamworks\GameCoordinatorCommon.h" />
+    <ClInclude Include="opensteamworks\GameServerCommon.h" />
+    <ClInclude Include="opensteamworks\gameserveritem.h" />
+    <ClInclude Include="opensteamworks\GameServerStatsCommon.h" />
+    <ClInclude Include="opensteamworks\GameStatsCommon.h" />
+    <ClInclude Include="opensteamworks\HTTPCommon.h" />
+    <ClInclude Include="opensteamworks\IClientAppManager.h" />
+    <ClInclude Include="opensteamworks\IClientApps.h" />
+    <ClInclude Include="opensteamworks\IClientAudio.h" />
+    <ClInclude Include="opensteamworks\IClientBilling.h" />
+    <ClInclude Include="opensteamworks\IClientConfigStore.h" />
+    <ClInclude Include="opensteamworks\IClientContentServer.h" />
+    <ClInclude Include="opensteamworks\IClientDepotBuilder.h" />
+    <ClInclude Include="opensteamworks\IClientEngine.h" />
+    <ClInclude Include="opensteamworks\IClientFriends.h" />
+    <ClInclude Include="opensteamworks\IClientGameCoordinator.h" />
+    <ClInclude Include="opensteamworks\IClientGameServer.h" />
+    <ClInclude Include="opensteamworks\IClientGameServerStats.h" />
+    <ClInclude Include="opensteamworks\IClientGameStats.h" />
+    <ClInclude Include="opensteamworks\IClientHTTP.h" />
+    <ClInclude Include="opensteamworks\IClientMasterServerUpdater.h" />
+    <ClInclude Include="opensteamworks\IClientMatchmaking.h" />
+    <ClInclude Include="opensteamworks\IClientMatchmakingServers.h" />
+    <ClInclude Include="opensteamworks\IClientNetworking.h" />
+    <ClInclude Include="opensteamworks\IClientRemoteStorage.h" />
+    <ClInclude Include="opensteamworks\IClientScreenshots.h" />
+    <ClInclude Include="opensteamworks\IClientUser.h" />
+    <ClInclude Include="opensteamworks\IClientUserStats.h" />
+    <ClInclude Include="opensteamworks\IClientUtils.h" />
+    <ClInclude Include="opensteamworks\Interface_OSW.h" />
+    <ClInclude Include="opensteamworks\ISteam003.h" />
+    <ClInclude Include="opensteamworks\ISteam004.h" />
+    <ClInclude Include="opensteamworks\ISteam005.h" />
+    <ClInclude Include="opensteamworks\ISteam006.h" />
+    <ClInclude Include="opensteamworks\ISteam2Bridge001.h" />
+    <ClInclude Include="opensteamworks\ISteam2Bridge002.h" />
+    <ClInclude Include="opensteamworks\ISteamApps001.h" />
+    <ClInclude Include="opensteamworks\ISteamApps002.h" />
+    <ClInclude Include="opensteamworks\ISteamApps003.h" />
+    <ClInclude Include="opensteamworks\ISteamApps004.h" />
+    <ClInclude Include="opensteamworks\ISteamApps005.h" />
+    <ClInclude Include="opensteamworks\ISteamAppTicket001.h" />
+    <ClInclude Include="opensteamworks\ISteamBilling001.h" />
+    <ClInclude Include="opensteamworks\ISteamBilling002.h" />
+    <ClInclude Include="opensteamworks\ISteamClient006.h" />
+    <ClInclude Include="opensteamworks\ISteamClient007.h" />
+    <ClInclude Include="opensteamworks\ISteamClient008.h" />
+    <ClInclude Include="opensteamworks\ISteamClient009.h" />
+    <ClInclude Include="opensteamworks\ISteamClient010.h" />
+    <ClInclude Include="opensteamworks\ISteamClient011.h" />
+    <ClInclude Include="opensteamworks\ISteamClient012.h" />
+    <ClInclude Include="opensteamworks\ISteamContentServer001.h" />
+    <ClInclude Include="opensteamworks\ISteamContentServer002.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends001.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends002.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends003.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends004.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends005.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends006.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends007.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends008.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends009.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends010.h" />
+    <ClInclude Include="opensteamworks\ISteamFriends011.h" />
+    <ClInclude Include="opensteamworks\ISteamGameCoordinator001.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer002.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer003.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer004.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer005.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer006.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer007.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer008.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer009.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer010.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServer011.h" />
+    <ClInclude Include="opensteamworks\ISteamGameServerStats001.h" />
+    <ClInclude Include="opensteamworks\ISteamGameStats001.h" />
+    <ClInclude Include="opensteamworks\ISteamHTTP001.h" />
+    <ClInclude Include="opensteamworks\ISteamMasterServerUpdater001.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking001.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking002.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking003.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking004.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking005.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking006.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking007.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking008.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmaking009.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmakingServers001.h" />
+    <ClInclude Include="opensteamworks\ISteamMatchmakingServers002.h" />
+    <ClInclude Include="opensteamworks\ISteamNetworking001.h" />
+    <ClInclude Include="opensteamworks\ISteamNetworking002.h" />
+    <ClInclude Include="opensteamworks\ISteamNetworking003.h" />
+    <ClInclude Include="opensteamworks\ISteamNetworking004.h" />
+    <ClInclude Include="opensteamworks\ISteamNetworking005.h" />
+    <ClInclude Include="opensteamworks\ISteamRemoteStorage001.h" />
+    <ClInclude Include="opensteamworks\ISteamRemoteStorage002.h" />
+    <ClInclude Include="opensteamworks\ISteamRemoteStorage003.h" />
+    <ClInclude Include="opensteamworks\ISteamRemoteStorage004.h" />
+    <ClInclude Include="opensteamworks\ISteamRemoteStorage005.h" />
+    <ClInclude Include="opensteamworks\ISteamRemoteStorage006.h" />
+    <ClInclude Include="opensteamworks\ISteamScreenshots001.h" />
+    <ClInclude Include="opensteamworks\ISteamUser004.h" />
+    <ClInclude Include="opensteamworks\ISteamUser005.h" />
+    <ClInclude Include="opensteamworks\ISteamUser006.h" />
+    <ClInclude Include="opensteamworks\ISteamUser007.h" />
+    <ClInclude Include="opensteamworks\ISteamUser008.h" />
+    <ClInclude Include="opensteamworks\ISteamUser009.h" />
+    <ClInclude Include="opensteamworks\ISteamUser010.h" />
+    <ClInclude Include="opensteamworks\ISteamUser011.h" />
+    <ClInclude Include="opensteamworks\ISteamUser012.h" />
+    <ClInclude Include="opensteamworks\ISteamUser013.h" />
+    <ClInclude Include="opensteamworks\ISteamUser014.h" />
+    <ClInclude Include="opensteamworks\ISteamUser015.h" />
+    <ClInclude Include="opensteamworks\ISteamUser016.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats001.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats002.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats003.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats004.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats005.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats006.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats007.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats008.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats009.h" />
+    <ClInclude Include="opensteamworks\ISteamUserStats010.h" />
+    <ClInclude Include="opensteamworks\ISteamUtils001.h" />
+    <ClInclude Include="opensteamworks\ISteamUtils002.h" />
+    <ClInclude Include="opensteamworks\ISteamUtils003.h" />
+    <ClInclude Include="opensteamworks\ISteamUtils004.h" />
+    <ClInclude Include="opensteamworks\ISteamUtils005.h" />
+    <ClInclude Include="opensteamworks\MasterServerUpdaterCommon.h" />
+    <ClInclude Include="opensteamworks\MatchmakingCommon.h" />
+    <ClInclude Include="opensteamworks\MatchMakingKeyValuePair.h" />
+    <ClInclude Include="opensteamworks\MatchmakingServersCommon.h" />
+    <ClInclude Include="opensteamworks\NetworkingCommon.h" />
+    <ClInclude Include="opensteamworks\POSIXLibrary.h" />
+    <ClInclude Include="opensteamworks\RemoteStorageCommon.h" />
+    <ClInclude Include="opensteamworks\ScreenshotsCommon.h" />
+    <ClInclude Include="opensteamworks\servernetadr.h" />
+    <ClInclude Include="opensteamworks\Steam.h" />
+    <ClInclude Include="opensteamworks\SteamAPI.h" />
+    <ClInclude Include="opensteamworks\Steamclient.h" />
+    <ClInclude Include="opensteamworks\SteamclientAPI.h" />
+    <ClInclude Include="opensteamworks\SteamSalt.h" />
+    <ClInclude Include="opensteamworks\SteamTypes.h" />
+    <ClInclude Include="opensteamworks\Steamworks.h" />
+    <ClInclude Include="opensteamworks\TSteamApp.h" />
+    <ClInclude Include="opensteamworks\TSteamAppDependencyInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamAppLaunchOption.h" />
+    <ClInclude Include="opensteamworks\TSteamAppStats.h" />
+    <ClInclude Include="opensteamworks\TSteamAppVersion.h" />
+    <ClInclude Include="opensteamworks\TSteamDiscountQualifier.h" />
+    <ClInclude Include="opensteamworks\TSteamElemInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamError.h" />
+    <ClInclude Include="opensteamworks\TSteamExternalBillingInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamGlobalUserID.h" />
+    <ClInclude Include="opensteamworks\TSteamOfflineStatus.h" />
+    <ClInclude Include="opensteamworks\TSteamPaymentCardInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamPaymentCardReceiptInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamPrepurchaseInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamPrepurchaseReceiptInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamProgress.h" />
+    <ClInclude Include="opensteamworks\TSteamSplitLocalUserID.h" />
+    <ClInclude Include="opensteamworks\TSteamSubscription.h" />
+    <ClInclude Include="opensteamworks\TSteamSubscriptionBillingInfo.h" />
+    <ClInclude Include="opensteamworks\TSteamSubscriptionDiscount.h" />
+    <ClInclude Include="opensteamworks\TSteamSubscriptionReceipt.h" />
+    <ClInclude Include="opensteamworks\TSteamSubscriptionStats.h" />
+    <ClInclude Include="opensteamworks\TSteamUpdateStats.h" />
+    <ClInclude Include="opensteamworks\UserCommon.h" />
+    <ClInclude Include="opensteamworks\UserStatsCommon.h" />
+    <ClInclude Include="opensteamworks\UtilsCommon.h" />
+    <ClInclude Include="opensteamworks\Win32Library.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="steam_api_wrapper.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="GameCoordinator.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="steam_api_wrapper.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

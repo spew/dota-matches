@@ -1,0 +1,8 @@
+LIBRARY
+  EXPORTS
+
+  Initialize @1
+  Shutdown @2
+  SendMessage @3
+  IsMessageAvailable @4
+  RetrieveMessage @5
